@@ -1,10 +1,18 @@
+const formModal = $("formModal");
+const inputTitle = $("formTitle");
+const inputDate = $("formDate");
+
+
+
+
 // Retrieve tasks and nextId from localStorage
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
+
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-
+    return Math.floor(Math.random() * 1000).toString();
 }
 
 // Todo: create a function to create a task card
@@ -19,6 +27,7 @@ function renderTaskList() {
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
+  event.preventDefault();
 
 }
 
@@ -34,5 +43,15 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
+ renderTaskList();
 
+ $("#formDate").datepicker();
+ $("submitTask").click(handleAddTask);
+ $(".lane").droppable({
+    accept: ".draggable",
+    drop: handleDrop,
+ });
 });
+
+
+
