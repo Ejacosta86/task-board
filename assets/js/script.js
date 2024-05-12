@@ -1,13 +1,14 @@
-const formModal = $("formModal");
-const inputTitle = $("formTitle");
-const inputDate = $("formDate");
-
-
-
-
 // Retrieve tasks and nextId from localStorage
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
+
+const formModal = $("#formModal");
+const inputTitle = $("#formTitle");
+const inputDate = $("#formDate");
+const inputDescription = $("#FormDescription");
+const taskTodo = $("#todo-card");
+const taskProgress = $("#in-progress-card");
+const taskDone = $("#done-card");
 
 
 // Todo: create a function to generate a unique task id
@@ -17,7 +18,29 @@ function generateTaskId() {
 
 // Todo: create a function to create a task card
 function createTaskCard(task) {
+  const taskContainer = $("<div>")
 
+  const taskTitle = $("<h2>");
+  taskTitle.text(task.title);
+  taskTitle.addClass("card-header");
+  taskContainer.append(takeTitle);
+
+
+  const taskDate = $("<p>");
+  taskDate.text(task.title);
+  taskDate.addClass("card-text");
+  taskContainer.append(taskDate);
+
+
+  const takeDescription = $("<p>");
+  takeDescription.text(task.title);
+  takeDescription.addClass("card-body");
+  taskContainer.append(takeDescription);
+
+  
+  const taskDelete = $("<button>");
+  taskDelete.addClass("btn btn-danger");
+  taskContainer.append(taskDelete);
 }
 
 // Todo: create a function to render the task list and make cards draggable
